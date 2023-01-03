@@ -1,0 +1,138 @@
+.container {
+  max-width: 120rem;
+  margin: 8rem auto; //top and bottom 8rem, left and right auto (for centers the container inside of its parent element which is the body)
+  background-color: var(--color-grey-light-1);
+  box-shadow: var(--shadow-dark);
+  // container !
+  min-height: 50rem;
+
+  // max-width - desktop first strategy
+  @media only screen and (max-width: $bp-largest) {
+    margin: 0; // removes margins on all sides
+
+    // 120rem which a now only 8 px (we reduce ) - we need this changes
+    max-width: 100%;
+    width: 100%;
+  }
+}
+
+.header {
+  font-size: 1.4rem;
+  height: 7rem;
+  background-color: #fff;
+  border-bottom: var(--line);
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @media only screen and (max-width: $bp-smallest) {
+    // create a new row to drop an search bar. With it we are allowing the flex items to wrap a new line if they don't have enough space in the flex container
+    flex-wrap: wrap;
+    // increase the height of the element
+    height: 11rem;
+    // decrease the space between the rows
+    align-content: space-around;
+  }
+}
+
+.content {
+  display: flex;
+
+  @media only screen and (max-width: $bp-medium) {
+    //looks bad on the left move up
+    flex-direction: column;
+  }
+}
+
+.sidebar {
+  background-color: var(--color-grey-dark-1);
+
+  flex: 0 0 18%;
+
+  // push legal text to the bottom
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.hotel-view {
+  background-color: #fff;
+
+  flex: 1;
+}
+
+.detail {
+  // format the font of description and review (__layout.scss) !inherent!!
+  font-size: 1.4rem;
+  // make description and user-reviews side by side
+  display: flex;
+  //padding inside the container
+  padding: 4.5rem;
+  // create different color inside the container
+  background-color: var(--color-grey-light-1);
+  border-bottom: var(--line);
+
+  // ALWAYS we first put the one for the largest screen coz both of this BP apply with conditions. We don't want declarations to conflict
+  @media only screen and (max-width: $bp-medium) {
+    //decrease all paddings
+    padding: 3rem;
+  }
+
+  @media only screen and (max-width: $bp-small) {
+    //one below the other
+    flex-direction: column;
+  }
+
+  @media only screen and (max-width: $bp-smallest-0) {
+    //one below the other
+    font-size: 1.2rem;
+  }
+
+  @media only screen and (max-width: $bp-smallest-2) {
+    //one below the other
+    font-size: 1.1rem;
+  }
+
+  @media only screen and (max-width: $bp-smallest-3) {
+    //one below the other
+    font-size: 1rem;
+  }
+
+  // @media only screen and (max-width: $bp-smallest-1) {
+  //   //one below the other
+  //   font-size: 1.2rem;
+  // }
+}
+
+.description {
+  background-color: #fff;
+  box-shadow: var(--shadow-light);
+  // increase the size of description
+  padding: 3rem;
+  // we make it so that it takes 60% of available width
+  flex: 0 0 60%; // dont grow, dont shrink only occupy 60%
+  // margin between desc.. and user-reviews
+  margin-right: 4.5rem;
+
+  @media only screen and (max-width: $bp-medium) {
+    //decrease all paddings and margins
+    padding: 2rem;
+    margin-right: 3rem;
+  }
+
+  @media only screen and (max-width: $bp-small) {
+    //decrease margins
+    margin-right: 0;
+    margin-bottom: 3rem;
+  }
+}
+
+.user-reviews {
+  flex: 1; // remaining space
+
+  //centering the button with arrow
+  display: flex;
+  flex-direction: column; // using this property, the button element will stretch to the full extent of the flex container. Because STRETCH is set to default
+  align-items: center;
+}
